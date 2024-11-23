@@ -26,15 +26,6 @@ function OrderForm() {
     }
   }
 
-  // const checkUser = () => {
-  //   const ordersNew = JSON.parse(JSON.stringify(orders))
-  //   ordersNew.forEach((order) => delete order.id)
-  //   return ordersNew.filter(
-  //     (order) =>
-  //       order.username === data.username && order.doctitle === data.doctitle
-  //   )
-  // }
-
   const testFunc = () => {
     handleOrdersData()
   }
@@ -45,7 +36,6 @@ function OrderForm() {
       try {
         axios.post('http://localhost:3000/orders', data)
         setData({ username: '', doctitle: '' })
-        handleOrdersData()
       } catch (error) {
         console.log(error)
       }
@@ -53,6 +43,8 @@ function OrderForm() {
       console.log('Заказ уже есть!')
     }
   }
+
+  handleOrdersData()
 
   return (
     <div className="order-form">
