@@ -1,10 +1,10 @@
-import { useState /* useContext */ } from 'react'
-// import OrdersContext from './context/OrdersContext'
+import { useState, useContext } from 'react'
+import OrdersContext from './context/OrdersContext'
 import axios from 'axios'
 
 function OrderForm() {
   const [data, setData] = useState({ username: '', doctitle: '' })
-  const [orders, setOrders] = useState(getOrdersData)
+  const { orders, setOrders } = useContext(OrdersContext)
   const [users, setUsers] = useState(getUsersData)
 
   const handleChange = (event) => {
