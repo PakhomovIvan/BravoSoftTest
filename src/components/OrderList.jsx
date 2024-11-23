@@ -1,4 +1,3 @@
-import React from 'react'
 import MainTable from './Table/MainTable'
 
 const OrderList = () => {

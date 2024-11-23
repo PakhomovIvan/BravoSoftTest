@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
 import OrdersContext from './context/OrdersContext'
 import { getData } from './utils/getData.js'
@@ -7,7 +7,7 @@ import { checkUser } from './utils/checkUser.js'
 function OrderForm() {
   const [data, setData] = useState({ username: '', doctitle: '' })
   const { orders, setOrders } = useContext(OrdersContext)
-  const [users, setUsers] = useState(getUsersData)
+  const [users, setUsers] = useState('')
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value })
@@ -17,13 +17,8 @@ function OrderForm() {
     setOrders(await getData('orders'))
   }
 
-  async function getUsersData() {
-    try {
-      const users = await axios.get('http://localhost:3000/users')
-      setUsers(users.data)
-    } catch (error) {
-      console.error(error.message)
-    }
+  async function handleUsersData() {
+    setUsers(await getData('users'))
   }
 
   const testFunc = () => {
@@ -39,12 +34,16 @@ function OrderForm() {
       } catch (error) {
         console.log(error)
       }
+      handleOrdersData()
     } else {
       console.log('Заказ уже есть!')
     }
   }
 
-  handleOrdersData()
+  useEffect(() => {
+    handleOrdersData()
+    handleUsersData()
+  }, [])
 
   return (
     <div className="order-form">
