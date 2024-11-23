@@ -1,6 +1,8 @@
 import { useState, useContext } from 'react'
-import OrdersContext from './context/OrdersContext'
 import axios from 'axios'
+import OrdersContext from './context/OrdersContext'
+import { getData } from './utils/getData.js'
+import { checkUser } from './utils/checkUser.js'
 
 function OrderForm() {
   const [data, setData] = useState({ username: '', doctitle: '' })
@@ -11,13 +13,8 @@ function OrderForm() {
     setData({ ...data, [event.target.name]: event.target.value })
   }
 
-  async function getOrdersData() {
-    try {
-      const orders = await axios.get('http://localhost:3000/orders')
-      setOrders(orders.data)
-    } catch (error) {
-      console.error(error.message)
-    }
+  async function handleOrdersData() {
+    setOrders(await getData('orders'))
   }
 
   async function getUsersData() {
@@ -29,24 +26,26 @@ function OrderForm() {
     }
   }
 
-  const checkUser = () => {
-    const ordersNew = JSON.parse(JSON.stringify(orders))
-    ordersNew.forEach((order) => delete order.id)
-    return ordersNew.filter(
-      (order) =>
-        order.username === data.username && order.doctitle === data.doctitle
-    )
-  }
+  // const checkUser = () => {
+  //   const ordersNew = JSON.parse(JSON.stringify(orders))
+  //   ordersNew.forEach((order) => delete order.id)
+  //   return ordersNew.filter(
+  //     (order) =>
+  //       order.username === data.username && order.doctitle === data.doctitle
+  //   )
+  // }
 
-  const testFunc = () => {}
+  const testFunc = () => {
+    handleOrdersData()
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (!checkUser().length) {
+    if (checkUser(data, orders)) {
       try {
         axios.post('http://localhost:3000/orders', data)
         setData({ username: '', doctitle: '' })
-        getOrdersData() // разобраться с вызовом
+        handleOrdersData()
       } catch (error) {
         console.log(error)
       }
