@@ -26,10 +26,11 @@ function OrderForm() {
     setDocs()
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     if (checkUser(data, orders)) {
-      postDataApi(data)
+      await postDataApi(data)
+      handleOrdersData()
       setData({ username: '', doctitle: '' })
     } else {
       console.log('Заказ уже есть!')
@@ -37,9 +38,9 @@ function OrderForm() {
   }
 
   useEffect(() => {
-    handleOrdersData()
     handleUsersData()
-  }, [handleSubmit])
+    handleOrdersData()
+  }, [])
 
   return (
     <div className="order-form">
@@ -72,6 +73,7 @@ function OrderForm() {
           />
         </label>
         <br />
+        <div></div>
         <button type="submit">Отправить</button>
         <button type="button" onClick={testFunc}>
           Test

@@ -2,8 +2,7 @@ import axios from 'axios'
 
 export async function postDataApi(data) {
   try {
-    axios.post(`http://localhost:3000/orders`, data)
-    return true
+    await axios.post(`http://localhost:3000/orders`, data)
   } catch (error) {
     console.error(error.message)
   }
