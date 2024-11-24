@@ -1,10 +1,10 @@
 export const COLUMNS = [
   {
     Header: 'Документ',
-    accessor: 'doctitle',
+    accessor: 'title',
   },
   {
-    Header: 'Заведено заявок',
-    accessor: 'username',
+    Header: 'Заявок',
+    accessor: 'count',
   },
 ]

@@ -6,7 +6,7 @@ import './MainTable.css'
 
 const MainTable = () => {
   const columns = useMemo(() => COLUMNS, [])
-  const data = useMemo(() => JSON_DATA.orders, [])
+  const data = useMemo(() => JSON_DATA.docs, [])
 
   const tableInstance = useTable({
     columns,

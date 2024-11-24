@@ -1,7 +1,8 @@
 import { useState, useContext, useEffect } from 'react'
 import OrdersContext from './context/OrdersContext'
-import { getDataApi } from './api/getDataApi.js'
-import { postDataApi } from './api/postDataApi.js'
+import { getOrdersDataApi } from './api/getOrdersDataApi.js'
+import { getUsersDataApi } from './api/getUsersDataApi.js'
+import { postOrdersDataApi } from './api/postOrdersDataApi.js'
 import { checkUser } from './utils/checkUser.js'
 import { setDocs } from './utils/setDocs.js'
 
@@ -15,11 +16,11 @@ function OrderForm() {
   }
 
   async function handleOrdersData() {
-    setOrders(await getDataApi('orders'))
+    setOrders(await getOrdersDataApi())
   }
 
   async function handleUsersData() {
-    setUsers(await getDataApi('users'))
+    setUsers(await getUsersDataApi())
   }
 
   const testFunc = () => {
@@ -29,8 +30,9 @@ function OrderForm() {
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (checkUser(data, orders)) {
-      await postDataApi(data)
+      await postOrdersDataApi(data)
       handleOrdersData()
+      await setDocs()
       setData({ username: '', doctitle: '' })
     } else {
       console.log('Заказ уже есть!')
