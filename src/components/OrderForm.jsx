@@ -1,8 +1,9 @@
 import { useState, useContext, useEffect } from 'react'
-import axios from 'axios'
 import OrdersContext from './context/OrdersContext'
-import { getData } from './utils/getData.js'
+import { getDataApi } from './api/getDataApi.js'
+import { postDataApi } from './api/postDataApi.js'
 import { checkUser } from './utils/checkUser.js'
+import { setDocs } from './utils/setDocs.js'
 
 function OrderForm() {
   const [data, setData] = useState({ username: '', doctitle: '' })
@@ -14,27 +15,22 @@ function OrderForm() {
   }
 
   async function handleOrdersData() {
-    setOrders(await getData('orders'))
+    setOrders(await getDataApi('orders'))
   }
 
   async function handleUsersData() {
-    setUsers(await getData('users'))
+    setUsers(await getDataApi('users'))
   }
 
   const testFunc = () => {
-    handleOrdersData()
+    setDocs()
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
     if (checkUser(data, orders)) {
-      try {
-        axios.post('http://localhost:3000/orders', data)
-        setData({ username: '', doctitle: '' })
-      } catch (error) {
-        console.log(error)
-      }
-      handleOrdersData()
+      postDataApi(data)
+      setData({ username: '', doctitle: '' })
     } else {
       console.log('Заказ уже есть!')
     }
@@ -43,7 +39,7 @@ function OrderForm() {
   useEffect(() => {
     handleOrdersData()
     handleUsersData()
-  }, [])
+  }, [handleSubmit])
 
   return (
     <div className="order-form">

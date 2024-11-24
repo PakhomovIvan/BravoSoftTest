@@ -1,4 +1,18 @@
 {
+  "users": [
+    {
+      "id": "1",
+      "username": "IvanovII"
+    },
+    {
+      "id": "2",
+      "username": "PetrovPP"
+    },
+    {
+      "id": "3",
+      "username": "SidorovSS"
+    }
+  ],
   "orders": [
     {
       "id": "1",
@@ -44,23 +58,11 @@
       "id": "9",
       "username": "SidorovSS",
       "doctitle": "ГОСТ-123"
-    }
-  ],
-  "users": [
+    },
     {
-      "id": "1",
+      "id": "753f",
       "username": "IvanovII",
-      "email": "IvanovII@konstrburo.ru"
-    },
-    {
-      "id": "2",
-      "username": "PetrovPP",
-      "email": "PetrovPP@konstrburo.ru"
-    },
-    {
-      "id": "3",
-      "username": "SidorovSS",
-      "email": "SidorovSS@konstrburo.ru"
+      "doctitle": "111"
     }
   ]
 }

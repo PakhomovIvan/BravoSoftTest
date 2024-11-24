@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export async function getData(query) {
+export async function getDataApi(query) {
   try {
     const resp = await axios.get(`http://localhost:3000/${query}`)
     return resp.data
