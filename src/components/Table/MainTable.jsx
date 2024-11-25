@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
-import { useTable } from 'react-table'
+import { useTable, useSortBy } from 'react-table'
+import { FaSort, FaSortDown, FaSortUp } from 'react-icons/fa6'
 import { COLUMNS } from './columns'
 import JSON_DATA from '../../data/db.json'
 import './MainTable.css'
@@ -8,10 +9,13 @@ const MainTable = () => {
   const columns = useMemo(() => COLUMNS, [])
   const data = useMemo(() => JSON_DATA.docs, [])
 
-  const tableInstance = useTable({
-    columns,
-    data,
-  })
+  const tableInstance = useTable(
+    {
+      columns,
+      data,
+    },
+    useSortBy
+  )
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance
@@ -22,8 +26,22 @@ const MainTable = () => {
         {headerGroups.map((headerGroup, headerGroup_i) => (
           <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup_i}>
             {headerGroup.headers.map((column, column_i) => (
-              <th {...column.getHeaderProps()} key={column_i}>
+              <th
+                {...column.getHeaderProps(column.getSortByToggleProps())}
+                key={column_i}
+              >
                 {column.render('Header')}
+                <span>
+                  {column.isSorted ? (
+                    column.isSortedDesc ? (
+                      <FaSortDown />
+                    ) : (
+                      <FaSortUp />
+                    )
+                  ) : (
+                    <FaSort />
+                  )}
+                </span>
               </th>
             ))}
           </tr>
