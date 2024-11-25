@@ -8,6 +8,9 @@ export const notify = (type, message) => {
     case 'warning':
       return toast.warning(message)
 
+    case 'error':
+      return toast.error(message)
+
     default:
       break
   }

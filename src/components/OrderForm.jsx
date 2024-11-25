@@ -14,9 +14,6 @@ function OrderForm() {
   const { orders, setOrders } = useContext(OrdersContext)
   const [users, setUsers] = useState('')
 
-  // const notifyWarning = (message) => toast.warning(message)
-  // const notifySuccess = (message) => toast.success(message)
-
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value })
   }
@@ -29,11 +26,15 @@ function OrderForm() {
     setUsers(await getUsersDataApi())
   }
 
-  const testFunc = () => {}
+  const testFunc = () => {
+    console.log(data.username.length)
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    if (checkUser(data, orders)) {
+    if (data.username.length === 0 && data.doctitle.length === 0) {
+      notify('error', 'Заполните поля формы !')
+    } else if (checkUser(data, orders)) {
       await postOrdersDataApi(data)
       notify(
         'success',
