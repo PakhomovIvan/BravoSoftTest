@@ -5,17 +5,9 @@ import { deleteDocsDataApi } from '../api/deleteDocsDataApi'
 
 export async function setDocs() {
   const orders = await getOrdersDataApi()
-
   const docsArr = orders.map((e) => e.doctitle)
-
   const docsUniqueArr = Array.from(new Set(docsArr))
-
-  // console.log('Массив договоров в заказах:', docsArr)
-  // console.log('Массив уникальных договоров:', docsUniqueArr)
-
   const docList = await getDocsDataApi()
-
-  // console.log('Документов прочитано: ', docList)
 
   docList.map(async (_, i) => await deleteDocsDataApi(i))
 
@@ -25,6 +17,7 @@ export async function setDocs() {
       title: doc,
       count: docsArr.filter((d) => doc === d).length,
     }
+
     await postDocsDataApi(obj)
   })
 }

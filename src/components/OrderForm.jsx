@@ -26,9 +26,9 @@ function OrderForm() {
     setUsers(await getUsersDataApi())
   }
 
-  const testFunc = () => {
-    console.log(import.meta.env.VITE_API_URL)
-  }
+  // const testFunc = () => {
+  //   console.log(import.meta.env.VITE_API_URL)
+  // }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -89,9 +89,9 @@ function OrderForm() {
         <br />
         <div></div>
         <button type="submit">Отправить</button>
-        <button type="button" onClick={testFunc}>
+        {/* <button type="button" onClick={testFunc}>
           Test
-        </button>
+        </button> */}
       </form>
       <ToastContainer />
     </div>
