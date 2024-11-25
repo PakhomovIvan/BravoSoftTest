@@ -58,43 +58,7 @@
       "id": "9",
       "username": "SidorovSS",
       "doctitle": "ГОСТ-123"
-    },
-    {
-      "id": "f162",
-      "username": "IvanovII",
-      "doctitle": "111"
-    },
-    {
-      "id": "c8cd",
-      "username": "IvanovII",
-      "doctitle": "1111"
     }
   ],
-  "docs": [
-    {
-      "id": "0",
-      "title": "ГОСТ-123",
-      "count": 3
-    },
-    {
-      "id": "1",
-      "title": "ГОСТ-Р-125",
-      "count": 3
-    },
-    {
-      "id": "2",
-      "title": "ГОСТ-РВ-0009",
-      "count": 3
-    },
-    {
-      "id": "3",
-      "title": "111",
-      "count": 1
-    },
-    {
-      "id": "4",
-      "title": "1111",
-      "count": 1
-    }
-  ]
+  "docs": []
 }
