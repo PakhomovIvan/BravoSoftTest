@@ -32,8 +32,8 @@ function OrderForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    if (data.username.length === 0 && data.doctitle.length === 0) {
-      notify('error', 'Заполните поля формы !')
+    if (data.username.length === 0 || data.doctitle.length === 0) {
+      notify('error', 'Заполните поля формы')
     } else if (checkUser(data, orders)) {
       await postOrdersDataApi(data)
       notify(
