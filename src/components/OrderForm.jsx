@@ -1,13 +1,13 @@
 import { useState, useContext, useEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
+import OrdersContext from '../context/OrdersContext.jsx'
+import { getOrdersDataApi } from '../api/getOrdersDataApi.js'
+import { getUsersDataApi } from '../api/getUsersDataApi.js'
+import { postOrdersDataApi } from '../api/postOrdersDataApi.js'
+import { checkUser } from '../utils/checkUser.js'
+import { setDocs } from '../utils/setDocs.js'
+import { notify } from '../utils/Notification/notification.js'
 import 'react-toastify/dist/ReactToastify.css'
-import OrdersContext from './context/OrdersContext'
-import { getOrdersDataApi } from './api/getOrdersDataApi.js'
-import { getUsersDataApi } from './api/getUsersDataApi.js'
-import { postOrdersDataApi } from './api/postOrdersDataApi.js'
-import { checkUser } from './utils/checkUser.js'
-import { setDocs } from './utils/setDocs.js'
-import { notify } from './utils/Notification/notification.js'
 
 function OrderForm() {
   const [data, setData] = useState({ username: '', doctitle: '' })
@@ -26,9 +26,9 @@ function OrderForm() {
     setUsers(await getUsersDataApi())
   }
 
-  // const testFunc = () => {
-  //   console.log(data.username.length)
-  // }
+  const testFunc = () => {
+    console.log(import.meta.env.VITE_API_URL)
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -89,9 +89,9 @@ function OrderForm() {
         <br />
         <div></div>
         <button type="submit">Отправить</button>
-        {/* <button type="button" onClick={testFunc}>
+        <button type="button" onClick={testFunc}>
           Test
-        </button> */}
+        </button>
       </form>
       <ToastContainer />
     </div>

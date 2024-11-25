@@ -1,4 +1,4 @@
-import OrdersContext from './components/context/OrdersContext'
+import OrdersContext from './context/OrdersContext'
 import { useState } from 'react'
 import MainTabs from './components/Tabs/MainTabs'
 import './App.css'

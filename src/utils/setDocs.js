@@ -1,4 +1,4 @@
-import { getOrdersDataApi } from '../api/getOrdersDataApi'
+import { getOrdersDataApi } from '../api/getOrdersDataApi.js'
 import { getDocsDataApi } from '../api/getDocsDataApi'
 import { postDocsDataApi } from '../api/postDocsDataApi'
 import { deleteDocsDataApi } from '../api/deleteDocsDataApi'

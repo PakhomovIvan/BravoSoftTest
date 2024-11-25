@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useTable, useSortBy } from 'react-table'
 import { FaSort, FaSortDown, FaSortUp } from 'react-icons/fa6'
-import { COLUMNS } from './columns'
+import { COLUMNS } from './MainTableColumns.js'
 import JSON_DATA from '../../data/db.json'
 import './MainTable.css'
 
