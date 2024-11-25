@@ -1,4 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import OrdersContext from './context/OrdersContext'
 import { getOrdersDataApi } from './api/getOrdersDataApi.js'
 import { getUsersDataApi } from './api/getUsersDataApi.js'
@@ -10,6 +12,9 @@ function OrderForm() {
   const [data, setData] = useState({ username: '', doctitle: '' })
   const { orders, setOrders } = useContext(OrdersContext)
   const [users, setUsers] = useState('')
+
+  const notifyWarning = (message) => toast.warning(message)
+  const notifySuccess = (message) => toast.success(message)
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value })
@@ -23,18 +28,22 @@ function OrderForm() {
     setUsers(await getUsersDataApi())
   }
 
-  const testFunc = () => {
-    setDocs()
-  }
+  const testFunc = () => {}
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (checkUser(data, orders)) {
       await postOrdersDataApi(data)
+      notifySuccess(
+        `Заявка на документ ${data.doctitle} от ${data.username} отправлена`
+      )
       handleOrdersData()
       await setDocs()
       setData({ username: '', doctitle: '' })
     } else {
+      notifyWarning(
+        `Заявка на документ ${data.doctitle} от ${data.username} уже зведена`
+      )
       console.log('Заказ уже есть!')
     }
   }
@@ -81,6 +90,7 @@ function OrderForm() {
           Test
         </button>
       </form>
+      <ToastContainer />
     </div>
   )
 }

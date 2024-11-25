@@ -4,8 +4,10 @@ import { postDocsDataApi } from '../api/postDocsDataApi'
 import { deleteDocsDataApi } from '../api/deleteDocsDataApi'
 
 export async function setDocs() {
-  const docTitleData = await getOrdersDataApi()
-  const docsArr = docTitleData.map((e) => e.doctitle)
+  const orders = await getOrdersDataApi()
+
+  const docsArr = orders.map((e) => e.doctitle)
+
   const docsUniqueArr = Array.from(new Set(docsArr))
 
   console.log('Массив договоров в заказах:', docsArr)
