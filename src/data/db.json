@@ -58,41 +58,6 @@
       "id": "9",
       "username": "SidorovSS",
       "doctitle": "ГОСТ-123"
-    },
-    {
-      "id": "eff8",
-      "username": "IvanovII",
-      "doctitle": "111"
-    },
-    {
-      "id": "80e6",
-      "username": "PetrovPP",
-      "doctitle": "111"
-    },
-    {
-      "id": "832e",
-      "username": "SidorovSS",
-      "doctitle": "111"
-    },
-    {
-      "id": "817d",
-      "username": "IvanovII",
-      "doctitle": "2323"
-    },
-    {
-      "id": "655d",
-      "username": "PetrovPP",
-      "doctitle": "213"
-    },
-    {
-      "id": "0ac1",
-      "username": "PetrovPP",
-      "doctitle": "2"
-    },
-    {
-      "id": "f4a3",
-      "username": "IvanovII",
-      "doctitle": "2"
     }
   ],
   "docs": [
@@ -110,26 +75,6 @@
       "id": "2",
       "title": "ГОСТ-РВ-0009",
       "count": 3
-    },
-    {
-      "id": "3",
-      "title": "111",
-      "count": 3
-    },
-    {
-      "id": "4",
-      "title": "2323",
-      "count": 1
-    },
-    {
-      "id": "5",
-      "title": "213",
-      "count": 1
-    },
-    {
-      "id": "6",
-      "title": "2",
-      "count": 2
     }
   ]
 }
