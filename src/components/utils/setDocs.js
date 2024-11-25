@@ -10,12 +10,12 @@ export async function setDocs() {
 
   const docsUniqueArr = Array.from(new Set(docsArr))
 
-  console.log('Массив договоров в заказах:', docsArr)
-  console.log('Массив уникальных договоров:', docsUniqueArr)
+  // console.log('Массив договоров в заказах:', docsArr)
+  // console.log('Массив уникальных договоров:', docsUniqueArr)
 
   const docList = await getDocsDataApi()
 
-  console.log('Документов прочитано: ', docList)
+  // console.log('Документов прочитано: ', docList)
 
   docList.map(async (_, i) => await deleteDocsDataApi(i))
 

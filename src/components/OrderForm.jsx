@@ -26,9 +26,9 @@ function OrderForm() {
     setUsers(await getUsersDataApi())
   }
 
-  const testFunc = () => {
-    console.log(data.username.length)
-  }
+  // const testFunc = () => {
+  //   console.log(data.username.length)
+  // }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -48,7 +48,6 @@ function OrderForm() {
         'warning',
         `Заявка на документ ${data.doctitle} от ${data.username} уже зведена`
       )
-      console.log('Заказ уже есть!')
     }
   }
 
@@ -90,9 +89,9 @@ function OrderForm() {
         <br />
         <div></div>
         <button type="submit">Отправить</button>
-        <button type="button" onClick={testFunc}>
+        {/* <button type="button" onClick={testFunc}>
           Test
-        </button>
+        </button> */}
       </form>
       <ToastContainer />
     </div>
