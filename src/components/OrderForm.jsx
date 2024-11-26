@@ -26,9 +26,6 @@ function OrderForm() {
     setUsers(await getUsersDataApi())
   }
 
-  // const testFunc = () => {
-  // }
-
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (data.username.length === 0 || data.doctitle.length === 0) {
@@ -88,9 +85,6 @@ function OrderForm() {
         <br />
         <div></div>
         <button type="submit">Отправить</button>
-        {/* <button type="button" onClick={testFunc}>
-          Test
-        </button> */}
       </form>
       <ToastContainer />
     </div>
