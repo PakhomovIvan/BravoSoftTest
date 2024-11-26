@@ -64,3 +64,7 @@ form {
 .p-dropdown-item-label {
   padding-left: 10px;
 }
+
+.p-input-icon {
+  margin-top: 0;
+}

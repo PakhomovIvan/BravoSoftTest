@@ -1,6 +1,7 @@
 import { Dropdown } from 'primereact/dropdown'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
+
 import 'primereact/resources/themes/saga-blue/theme.css'
 import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
@@ -22,6 +23,7 @@ function OrderForm() {
   const [data, setData] = useState({ username: '', doctitle: '' })
   const { orders, setOrders } = useContext(OrdersContext)
   const [users, setUsers] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value })
@@ -37,17 +39,19 @@ function OrderForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    setIsLoading(true)
     if (data.username.length === 0 || data.doctitle.length === 0) {
       notify('error', 'Заполните поля формы')
     } else if (checkUser(data, orders)) {
       await postOrdersDataApi(data)
+      handleOrdersData()
+      await setDocs()
       notify(
         'success',
         `Заявка на документ ${data.doctitle} от ${data.username} отправлена`
       )
-      handleOrdersData()
-      await setDocs()
       setData({ username: '', doctitle: '' })
+      setIsLoading(false)
     } else {
       notify(
         'warning',
@@ -95,7 +99,16 @@ function OrderForm() {
             onChange={handleChange}
           />
         </div>
-        <Button label="Отправить" severity="secondary" type="submit" />
+        {isLoading ? (
+          <Button
+            label="Отправить"
+            severity="secondary"
+            type="submit"
+            disabled
+          />
+        ) : (
+          <Button label="Отправить" severity="secondary" type="submit" />
+        )}
       </form>
       <ToastContainer draggable />
     </div>
