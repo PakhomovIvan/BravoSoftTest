@@ -1,3 +1,7 @@
+import { Dropdown } from 'primereact/dropdown'
+import { InputText } from 'primereact/inputtext'
+import { Button } from 'primereact/button'
+
 import { useState, useContext, useEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
 import OrdersContext from '../context/OrdersContext.jsx'
@@ -8,6 +12,9 @@ import { checkUser } from '../utils/checkUser.js'
 import { setDocs } from '../utils/setDocs.js'
 import { notify } from '../utils/Notification/notification.js'
 import 'react-toastify/dist/ReactToastify.css'
+import 'primereact/resources/themes/saga-blue/theme.css'
+import 'primereact/resources/primereact.min.css'
+import 'primeicons/primeicons.css'
 
 function OrderForm() {
   const [data, setData] = useState({ username: '', doctitle: '' })
@@ -56,35 +63,27 @@ function OrderForm() {
     <div className="order-form">
       <h2>Заявка на документ</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          <input
-            autoComplete="off"
-            placeholder="ФИО конструктора"
-            type="text"
-            name="username"
-            value={data.username}
-            onChange={handleChange}
-            list="username"
-          />
-          <datalist id="username">
-            {users.length &&
-              users.map((user, i) => <option key={i}>{user.username}</option>)}
-          </datalist>
-        </label>
-        <br />
-        <label>
-          <input
-            autoComplete="off"
-            placeholder="Наименование документа"
-            type="text"
-            name="doctitle"
-            value={data.doctitle}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <div></div>
-        <button type="submit">Отправить</button>
+        <Dropdown
+          value={data.username}
+          onChange={handleChange}
+          name="username"
+          options={
+            users.length
+              ? users.map((user) => user.username)
+              : console.log('Нет юзеров')
+          }
+          optionLabel="name"
+          placeholder="ФИО конструктора"
+          className="dropdown-name"
+        />
+        <InputText
+          autoComplete="off"
+          placeholder="Название документа"
+          name="doctitle"
+          value={data.doctitle}
+          onChange={handleChange}
+        />
+        <Button label="Отправить" severity="secondary" type="submit" />
       </form>
       <ToastContainer />
     </div>

@@ -25,10 +25,10 @@ button {
 }
 
 input {
-  margin-bottom: 5px;
+  margin: 10px 0;
   border-radius: 12px;
   width: 200px;
-  height: 25px;
+  height: 30px;
   border: none;
   padding: 10px;
 }
@@ -40,10 +40,22 @@ input[type='text']::placeholder {
 .order-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
 }
 
 .order-table {
   display: flex;
   justify-content: center;
+}
+
+.dropdown-name {
+  width: 200px;
+  height: 30px;
+  border-radius: 12px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
 }
