@@ -68,3 +68,7 @@ form {
 .p-input-icon {
   margin-top: 0;
 }
+
+.p-inputgroup {
+  height: 30px;
+}

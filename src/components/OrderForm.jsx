@@ -101,7 +101,7 @@ function OrderForm() {
         </div>
         {isLoading ? (
           <Button
-            label="Отправить"
+            label="Загрузка..."
             severity="secondary"
             type="submit"
             disabled
