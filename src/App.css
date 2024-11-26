@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+}
+
+h2 {
+  margin-top: 50px;
+}
+
+button {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 12px;
+  margin: 20px;
+  border: 0;
+  cursor: pointer;
+  transition: 0.5s;
+
+  &:hover {
+    scale: 1.1;
+  }
+
+  &:active {
+    scale: 1;
+  }
+}
+
+input {
+  margin-bottom: 5px;
+  border-radius: 12px;
+  width: 200px;
+  height: 25px;
+  border: none;
+  padding: 10px;
+}
+
+input[type='text']::placeholder {
+  padding-left: 10px;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-table {
+  display: flex;
+  justify-content: center;
+}
