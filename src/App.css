@@ -42,7 +42,8 @@ input[type='text']::placeholder {
 
 .order-table {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .dropdown-name {
@@ -79,4 +80,9 @@ form {
 
 .p-inputgroup {
   height: 30px;
+}
+
+.react-tabs__tab-panel {
+  display: flex;
+  justify-content: center;
 }

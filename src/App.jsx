@@ -7,7 +7,7 @@ import { getUsersDataApi } from './api/getUsersDataApi'
 function App() {
   const [orders, setOrders] = useState()
 
-  setInterval(async () => await getUsersDataApi(), 30000) //  API не перестало отдавать данные по истечении 50с неактивности
+  setInterval(async () => await getUsersDataApi(), 30000) // чтобы API не перестало отдавать данные по истечении 50с неактивности
 
   return (
     <OrdersContext.Provider value={{ orders, setOrders }}>

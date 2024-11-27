@@ -9,15 +9,12 @@ export async function setDocs() {
   const docsUniqueArr = Array.from(new Set(docsArr))
   const docList = await getDocsDataApi()
 
-  docList.map(async (_, i) => await deleteDocsDataApi(i))
+  docList.map(async (doc) => await deleteDocsDataApi(doc.id))
 
-  docsUniqueArr.map(async (doc, i) => {
-    const obj = {
-      id: `${i}`,
+  docsUniqueArr.map(async (doc) => {
+    await postDocsDataApi({
       title: doc,
       count: docsArr.filter((d) => doc === d).length,
-    }
-
-    await postDocsDataApi(obj)
+    })
   })
 }
