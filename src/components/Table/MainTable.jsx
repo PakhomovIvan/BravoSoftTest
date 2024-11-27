@@ -28,6 +28,14 @@ const MainTable = () => {
     {
       columns,
       data,
+      initialState: {
+        sortBy: [
+          {
+            id: 'count',
+            desc: true,
+          },
+        ],
+      },
     },
     useSortBy
   )
