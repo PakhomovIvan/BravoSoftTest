@@ -1,14 +1,20 @@
-// import { resetDocsList } from '../utils/resetDocsList'
-import { setDocs } from '../utils/setDocs'
+import { Button } from 'primereact/button'
+import { resetJson } from '../utils/resetJson'
 import MainTable from './Table/MainTable'
 
 const OrderList = () => {
   return (
     <div className="order-table">
       <MainTable />
-      <button type="button" onClick={setDocs}>
-        Сбросить значения
-      </button>
+      <Button
+        icon="pi pi-sync"
+        rounded
+        outlined
+        severity="secondary"
+        aria-label="Cancel"
+        onClick={resetJson}
+        loadingIcon
+      />
     </div>
   )
 }
