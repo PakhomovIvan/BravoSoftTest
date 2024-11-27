@@ -7,7 +7,6 @@ import { getDocsDataApi } from '../../api/getDocsDataApi.js'
 
 const MainTable = () => {
   const [data2, setData2] = useState([])
-
   const columns = useMemo(() => COLUMNS, [])
   const data = useMemo(() => data2, [data2])
 

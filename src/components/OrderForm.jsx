@@ -42,6 +42,7 @@ function OrderForm() {
     setIsLoading(true)
     if (data.username.length === 0 || data.doctitle.length === 0) {
       notify('error', 'Заполните поля формы')
+      setIsLoading(false)
     } else if (checkUser(data, orders)) {
       await postOrdersDataApi(data)
       handleOrdersData()
