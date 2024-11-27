@@ -2,7 +2,6 @@ import { useMemo, useState, useEffect } from 'react'
 import { useTable, useSortBy } from 'react-table'
 import { FaSort, FaSortDown, FaSortUp } from 'react-icons/fa6'
 import { COLUMNS } from './MainTableColumns.js'
-// import JSON_DATA from '../../data/db.json'
 import './MainTable.css'
 import { getDocsDataApi } from '../../api/getDocsDataApi.js'
 
@@ -16,7 +15,7 @@ const MainTable = () => {
     const fetchData = async () => {
       try {
         const fetchedData = await getDocsDataApi()
-        setData2(fetchedData || [])
+        setData2(fetchedData)
       } catch (error) {
         console.error(error)
       }

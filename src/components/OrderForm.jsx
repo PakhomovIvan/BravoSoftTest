@@ -66,51 +66,53 @@ function OrderForm() {
   }, [])
 
   return (
-    <div className="order-form">
-      <h2>Заявка на документ</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="p-inputgroup flex-1">
-          <span className="p-inputgroup-addon">
-            <i className="pi pi-user"></i>
-          </span>
-          <Dropdown
-            value={data.username}
-            onChange={handleChange}
-            name="username"
-            options={
-              users.length
-                ? users.map((user) => user.username)
-                : console.log('Нет юзеров')
-            }
-            optionLabel="name"
-            placeholder="ФИО конструктора"
-            className="dropdown-name"
-          />
-        </div>
-        <div className="p-inputgroup flex-1">
-          <span className="p-inputgroup-addon">
-            <i className="pi pi-file-pdf"></i>
-          </span>
-          <InputText
-            autoComplete="off"
-            placeholder="Название документа"
-            name="doctitle"
-            value={data.doctitle}
-            onChange={handleChange}
-          />
-        </div>
-        {isLoading ? (
-          <Button
-            label="Загрузка..."
-            severity="secondary"
-            type="submit"
-            disabled
-          />
-        ) : (
-          <Button label="Отправить" severity="secondary" type="submit" />
-        )}
-      </form>
-      <ToastContainer draggable />
+    <div className="wrapper">
+      <div className="order-form">
+        <h2>Заявка на документ</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="p-inputgroup flex-1">
+            <span className="p-inputgroup-addon">
+              <i className="pi pi-user"></i>
+            </span>
+            <Dropdown
+              value={data.username}
+              onChange={handleChange}
+              name="username"
+              options={
+                users.length
+                  ? users.map((user) => user.username)
+                  : console.log('Нет юзеров')
+              }
+              optionLabel="name"
+              placeholder="ФИО конструктора"
+              className="dropdown-name"
+            />
+          </div>
+          <div className="p-inputgroup flex-1">
+            <span className="p-inputgroup-addon">
+              <i className="pi pi-file-pdf"></i>
+            </span>
+            <InputText
+              autoComplete="off"
+              placeholder="Название документа"
+              name="doctitle"
+              value={data.doctitle}
+              onChange={handleChange}
+            />
+          </div>
+          {isLoading ? (
+            <Button
+              label="Загрузка..."
+              severity="secondary"
+              type="submit"
+              disabled
+            />
+          ) : (
+            <Button label="Отправить" severity="secondary" type="submit" />
+          )}
+        </form>
+        <ToastContainer draggable />
+      </div>
     </div>
   )
 }
