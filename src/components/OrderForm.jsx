@@ -53,6 +53,7 @@ function OrderForm() {
       setData({ username: '', doctitle: '' })
       setIsLoading(false)
     } else {
+      setIsLoading(false)
       notify(
         'warning',
         `Заявка на документ ${data.doctitle} от ${data.username} уже зведена`
